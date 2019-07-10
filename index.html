@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ROCK-PAPER-SCISSORS</h1>
+    <h2>Choose one of them: rock, paper, scissors</h2>
+    <h3 id="result"></h3>
+    <div id="user-choice"></div>
+    <div id="comp-choice"></div>
+    <div id="wins">Wins: 0</div>
+    <div id="losses">Losses: 0</div>
+    <div id="draws">Draws: 0</div>
+    <script>
+        var wins=0;
+        var losses=0;
+        var draws=0;
+        var rps = "rps";
+        document.onkeyup = function(e){
+            var user_guess = e.key;
+            var index=Math.floor(Math.random()*rps.length);
+            var comp_choice = rps[index];
+
+            document.querySelector('#user-choice').innerHTML = "User Guess: " + user_guess;
+            document.querySelector('#comp-choice').innerHTML = "Comp Choice: " + comp_choice;
+
+            if((user_guess === 'r' && comp_choice === 'p') || (user_guess==='p' && comp_choice==='s') || (user_guess==='s' && comp_choice==='r')){
+                document.querySelector('#result').innerHTML = "Loser!!!"
+                losses++;
+            }
+            else if((user_guess==='r' && comp_choice==='s') || (user_guess==='p' && comp_choice==='r') || (user_guess==='s' && comp_choice==='p')){
+                document.querySelector('#result').innerHTML = "Winner!!!"
+                wins++;
+            }
+            else if((user_guess==='r' && comp_choice==='r') || (user_guess==='p' && comp_choice==='p') || (user_guess==='s' && comp_choice==='s')){ 
+                document.querySelector('#result').innerHTML = "Draws!!!"
+                draws++;
+            }
+            else{
+                alert("Error! Wrong button!")
+            }
+            document.querySelector('#wins').innerHTML = "Wins: " + wins;
+            document.querySelector('#losses').innerHTML = "Losses: " + losses;
+            document.querySelector('#draws').innerHTML = "Draws: " + draws;
+        }
+    
+    </script>
+
+
+</body>
+</html>
